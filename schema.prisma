@@ -1,0 +1,37 @@
+datasource db {
+  url      = env("DATABASE_URL")
+  provider = "mongodb"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Product {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt   DateTime @default(now())
+  title       String
+  imageUrl    String
+  description String?
+  popularity  Int      @default(0)
+  prices      Price[]
+}
+
+model Price {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  amount    Float
+  productID String  @unique
+  shopID    String
+  product   Product @relation(fields: [productID], references: [id])
+  shop      Shop    @relation(fields: [shopID], references: [id])
+
+  @@unique([productID, shopID])
+}
+
+model Shop {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String?
+  coordinates Json?
+  Price       Price[]
+}
