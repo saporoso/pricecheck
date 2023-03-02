@@ -84,6 +84,11 @@
     -webkit-animation: show 500ms ease normal;
     animation: show 500ms ease normal;
   }
+  @media (max-width: 420px) {
+    dialog[open] {
+      margin-block-end: 10%;
+    }
+  }
   @-webkit-keyframes show {
     from {
       opacity: 0;

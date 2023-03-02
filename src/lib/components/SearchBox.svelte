@@ -1,7 +1,6 @@
 <script>
   import { fly } from 'svelte/transition'
-
-  let inputRef = null
+  import AddProduct from '$lib/components/AddProduct.svelte'
 </script>
 
 <div
@@ -24,7 +23,6 @@
       />
     </svg>
     <input
-      bind:this={inputRef}
       type="text"
       class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-800 placeholder-gray-400 focus:ring-0 sm:text-sm"
       placeholder="Search..."
@@ -73,7 +71,7 @@
   </ul>
 
   <!-- Empty state, show/hide based on command palette state -->
-  <div class="py-14 px-6 text-center text-sm sm:px-14">
+  <div class="flex flex-col items-center py-14 px-6 text-sm sm:px-14">
     <!-- Heroicon name: outline/exclamation-circle -->
     <svg
       class="mx-auto h-6 w-6 text-gray-400"
@@ -91,25 +89,6 @@
       />
     </svg>
     <p class="mt-4 font-semibold text-gray-900">No products found</p>
-    <button
-      type="button"
-      class="mt-2 inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-    >
-      <!-- Heroicon name: solid/plus -->
-      <svg
-        class="-ml-1 mr-2 h-5 w-5"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 20 20"
-        fill="currentColor"
-        aria-hidden="true"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-          clip-rule="evenodd"
-        />
-      </svg>
-      New Product
-    </button>
+    <AddProduct />
   </div>
 </div>

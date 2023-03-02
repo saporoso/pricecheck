@@ -2,7 +2,7 @@
   "name": "pricecheck",
   "version": "0.0.1",
   "scripts": {
-    "dev": "svelte-kit dev --host",
+    "dev": "svelte-kit dev",
     "build": "npm run check && npm run lint && svelte-kit build",
     "start": "npm run build && svelte-kit preview --port=3333",
     "prettier": "prettier --ignore-path .gitignore --plugin-search-dir=. .",
@@ -10,16 +10,13 @@
     "format": "npm run prettier -- --write",
     "lint": "eslint --ignore-path .gitignore .",
     "husky": "husky install && husky add .husky/pre-commit \"npm run check && npm run lint\"",
-    "prisma-db-push": "prisma db push",
-    "prisma-generate": "prisma generate",
-    "prisma": "prisma generate && prisma db push",
-    "prisma-studio": "prisma studio",
-    "prisma-format": "prisma format"
+    "prisma": "prisma format && prisma generate && prisma db push"
   },
   "devDependencies": {
+    "@imask/svelte": "6.4.2",
     "@prisma/client": "3.14.0",
-    "@sveltejs/adapter-auto": "next",
-    "@sveltejs/kit": "next",
+    "@sveltejs/adapter-auto": "1.0.0-next.50",
+    "@sveltejs/kit": "1.0.0-next.347",
     "@tailwindcss/forms": "0.5.2",
     "autoprefixer": "10.4.7",
     "eslint": "8.16.0",
@@ -27,7 +24,7 @@
     "eslint-plugin-svelte3": "4.0.0",
     "husky": "8.0.1",
     "postcss": "8.4.14",
-    "postcss-load-config": "3.1.4",
+    "postcss-load-config": "4.0.1",
     "prettier": "2.6.2",
     "prettier-plugin-svelte": "2.7.0",
     "prettier-plugin-tailwindcss": "0.1.11",
@@ -36,6 +33,7 @@
     "tailwindcss": "3.0.24"
   },
   "dependencies": {
+    "firebase": "9.8.2",
     "prisma": "3.14.0"
   },
   "type": "module"
